@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Todo list:-</h1>
+    <div id="todos">
+       
+        <div id="todo-1">
+            <h4>1. wake up</h4>
+            <button onclick="deletetodo(1)">delete</button>
+        </div>
+        <div id="todo-2">
+            <h4>2. Eat</h4>
+            <button onclick="deletetodo(2)">delete</button>
+        </div>
+        <div id="3">
+            <h4>3. sleep</h4>
+            <button onclick="deletetodo(3)">delete</button>
+        </div>
+    </div>
+    <div>
+        <input id="inp" type="text"/>
+        <button onclick="addtodo()">add</button>
+    </div>
+        
+    
+</body>
+<script>
+    
+    let currentIndex=4;
+    function addtodo(){
+        inpEl=document.getElementById("inp");
+        text=document.createElement("div");
+        text.innerHTML="<div id='todo-"+ currentIndex +"'> <h4> "+ currentIndex +". "+ inpEl.value + '</h4><button onclick="deletetodo('+ currentIndex +')">delete</button></div>';
+        document.getElementById("todos").appendChild(text);
+        currentIndex++;
+    }
+    function deletetodo(index){
+        element=document.getElementById("todo-"+index);
+        element.parentNode.removeChild(element);
+    }
+</script>
+</html>
