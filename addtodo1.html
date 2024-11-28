@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root">
+
+    </div>
+    <div>
+        <input type="text"></input>
+        <button onclick="addtodo()">add todo</button>
+
+    </div>
+    <script>
+        let todos=[
+            {
+                id:1,
+                title: "go to gym"
+            },{
+                id:2,
+                title:"go on a walk"
+            }
+        ]
+        let ctr=3;
+        function addtodo(){
+           
+            todos.push(
+                {
+                    id:ctr,
+                    title:document.querySelector("input").value
+                }
+            )
+            render(todos);
+            ctr++;
+
+        }
+        function render(todos){
+            const todolist=document.getElementById("root");
+            todolist.innerHTML="";
+            todos.forEach(element => {
+                const newdiv=document.createElement("div");
+                const newh4=document.createElement("h4");
+                newh4.innerHTML=element.title;
+                newdiv.setAttribute("data-id",element.id);
+                newdiv.appendChild(newh4);
+                todolist.appendChild(newdiv);
+                
+            });
+
+        }
+        render(todos);
+    </script>
+    
+</body>
+</html>
